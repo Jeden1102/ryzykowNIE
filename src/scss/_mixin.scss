@@ -1,0 +1,281 @@
+@mixin button-base($background, $text-color) {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: $background;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+        rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: $text-color;
+    cursor: pointer;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all 0.2s, box-shadow 0.08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-weight: 500;
+    &:focus {
+        box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.2) 0 6px 15px 0,
+            rgba(0, 0, 0, 0.1) 0 2px 2px 0, rgba(50, 151, 211, 0.3) 0 0 0 4px;
+    }
+    &:hover {
+        transform: translateY(-2px);
+    }
+    &:disabled {
+        opacity: 0.6;
+    }
+}
+
+@mixin button-primary {
+    @include button-base(#405cf5, #fff);
+    &:hover {
+        background: #4f69ff;
+    }
+}
+
+@mixin button-white {
+    @include button-base(#fff, #000);
+    &:hover {
+        background: #f7f7f7;
+    }
+}
+
+@mixin link {
+    transition: 0.2s;
+    &:hover {
+        transition: 0.2s;
+        color: $secondary-green;
+        transform: translateY(-1px);
+    }
+}
+
+@mixin link-mobile-nav {
+    transition: 0.3s;
+    &:hover {
+        transition: 0.3s;
+        color: $secondary-green;
+        transform: translateY(-3px);
+        svg {
+            box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.2) 0 6px 15px 0,
+                rgba(0, 0, 0, 0.1) 0 2px 2px 0, rgba(50, 151, 211, 0.3) 0 0 0 4px;
+        }
+    }
+}
+
+@mixin glass-card {
+    border-radius: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@mixin floating-input-box {
+    label {
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        color: white;
+    }
+    input {
+        width: 100%;
+        padding: 10px 0px;
+        margin-top: 20px;
+        border: none;
+        outline: none;
+        background: none;
+        color: white;
+        font-weight: bold;
+    }
+    input::placeholder {
+        opacity: 0;
+    }
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(30px);
+        font-size: 0.825em;
+        transition-duration: 300ms;
+    }
+    label:focus-within > span,
+    input:not(:placeholder-shown) + span {
+        color: white;
+        transform: translateY(0px);
+        font-size: 0.7rem;
+    }
+}
+
+@mixin badge-base($bg, $color) {
+    padding: 5px 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    color: $color;
+    border: 2px solid $bg;
+    background-color: $bg;
+}
+
+@mixin base-heading() {
+    font-size: 2rem;
+    font-weight: 200;
+    text-align: center;
+    span {
+        font-weight: 600;
+    }
+}
+
+@mixin checkbox() {
+    position: relative;
+    & > svg {
+        position: absolute;
+        top: -130%;
+        left: -170%;
+        width: 110px;
+        pointer-events: none;
+    }
+    & * {
+        box-sizing: border-box;
+    }
+    & input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        margin: 0;
+    }
+    & input[type="checkbox"]:focus {
+        outline: 0;
+    }
+    & .cbx {
+        width: 24px;
+        height: 24px;
+        top: calc(50vh - 12px);
+        left: calc(50vw - 12px);
+    }
+    & .cbx input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        border: 2px solid #bfbfc0;
+        border-radius: 50%;
+    }
+    & .cbx label {
+        width: 24px;
+        height: 24px;
+        background: none;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-filter: url("#goo-12");
+        filter: url("#goo-12");
+        transform: trasnlate3d(0, 0, 0);
+        pointer-events: none;
+    }
+    & .cbx svg {
+        position: absolute;
+        top: 5px;
+        left: 4px;
+        z-index: 1;
+        pointer-events: none;
+    }
+    & .cbx svg path {
+        stroke: #fff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 19;
+        stroke-dashoffset: 19;
+        transition: stroke-dashoffset 0.3s ease;
+        transition-delay: 0.2s;
+    }
+    & .cbx input:checked + label {
+        animation: splash-12 0.6s ease forwards;
+    }
+    & .cbx input:checked + label + svg path {
+        stroke-dashoffset: 0;
+    }
+    @-moz-keyframes splash-12 {
+        40% {
+            background: #866efb;
+            box-shadow: 0 -18px 0 -8px #866efb, 16px -8px 0 -8px #866efb, 16px 8px 0 -8px #866efb, 0 18px 0 -8px #866efb,
+                -16px 8px 0 -8px #866efb, -16px -8px 0 -8px #866efb;
+        }
+        100% {
+            background: #866efb;
+            box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+        }
+    }
+    @-webkit-keyframes splash-12 {
+        40% {
+            background: #866efb;
+            box-shadow: 0 -18px 0 -8px #866efb, 16px -8px 0 -8px #866efb, 16px 8px 0 -8px #866efb, 0 18px 0 -8px #866efb,
+                -16px 8px 0 -8px #866efb, -16px -8px 0 -8px #866efb;
+        }
+        100% {
+            background: #866efb;
+            box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+        }
+    }
+    @-o-keyframes splash-12 {
+        40% {
+            background: #866efb;
+            box-shadow: 0 -18px 0 -8px #866efb, 16px -8px 0 -8px #866efb, 16px 8px 0 -8px #866efb, 0 18px 0 -8px #866efb,
+                -16px 8px 0 -8px #866efb, -16px -8px 0 -8px #866efb;
+        }
+        100% {
+            background: #866efb;
+            box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+        }
+    }
+    @keyframes splash-12 {
+        40% {
+            background: #866efb;
+            box-shadow: 0 -18px 0 -8px #866efb, 16px -8px 0 -8px #866efb, 16px 8px 0 -8px #866efb, 0 18px 0 -8px #866efb,
+                -16px 8px 0 -8px #866efb, -16px -8px 0 -8px #866efb;
+        }
+        100% {
+            background: #866efb;
+            box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+        }
+    }
+}
+
+@mixin profile-input() {
+    position: relative;
+    cursor: text;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 16px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #d6d6e7;
+    border-radius: 3px;
+    color: rgb(35, 38, 59);
+    box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+    overflow: hidden;
+    transition: all 100ms ease-in-out;
+    :focus {
+        border-color: #3c4fe0;
+        box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
+    }
+}

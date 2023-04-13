@@ -1,8 +1,8 @@
 import firebase from "../firebase";
 
-const db = firebase.ref("/ryzyk-fizyk");
+const db = firebase.ref("/questions");
 
-class dbService {
+class questions {
     getAll() {
         return db
     }
@@ -24,4 +24,4 @@ class dbService {
     }
 }
 
-export default new dbService();
+export default new questions();

@@ -8,16 +8,16 @@
   
   <script setup lang="ts">
 import { ref } from "vue";
-import dbService from "../services/dbService.js";
+import questions from "../services/questions.js";
 import { useToast } from "vue-toastification";
 
 const question = ref("");
 const emit = defineEmits(["refreshList"]);
 const toast = useToast();
 function addAttendant() {
-  const questions = JSON.parse(question.value);
-  questions.forEach((question) => {
-    dbService
+  const items = JSON.parse(question.value);
+  items.forEach((question) => {
+    questions
       .create(question)
       .then(() => {
         console.log("git");
