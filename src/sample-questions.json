@@ -1,0 +1,52 @@
+[
+    {
+        "question": "Ile wynosi najwyższy wodospad na świecie (w metrach)?",
+        "res": "979",
+        "desc": "Najwyższym wodospadem na świecie jest Wodospad Salto Angel w Wenezueli, który ma wysokość 979 metrów."
+    },
+    {
+        "question": "Jak długo może żyć wieloryb grenlandzki (w latach)?",
+        "res": "200",
+        "desc": "Wieloryb grenlandzki może żyć nawet do 200 lat."
+    },
+    {
+        "question": "Ile wynosi prędkość dźwięku w powietrzu (w metrach na sekundę)?",
+        "res": "343",
+        "desc": "Prędkość dźwięku w powietrzu wynosi około 343 metry na sekundę."
+    },
+    {
+        "question": "Ile wynosi największa głębia oceaniczna na świecie (w metrach)?",
+        "res": "10911",
+        "desc": "Największą głębokość na świecie osiąga Rów Mariański na Pacyfiku, a wynosi ona 10911 metrów."
+    },
+    {
+        "question": "Jak długo może żyć żółw morski (w latach)?",
+        "res": "100",
+        "desc": "Żółwie morskie mogą żyć nawet do 100 lat."
+    },
+    {
+        "question": "Ile wynosi średnia temperatura na Ziemi (w stopniach Celsiusza)?",
+        "res": "15",
+        "desc": "Średnia temperatura na Ziemi wynosi około 15 stopni Celsiusza."
+    },
+    {
+        "question": "Ile waży największy żyjący ptak (w kilogramach)?",
+        "res": "156",
+        "desc": "Największym żyjącym ptakiem na świecie jest kondor andyjski, którego masa może wynosić do 15,6 kg."
+    },
+    {
+        "question": "Ile wynosi najdłuższy rzut oszczepem na świecie (w metrach)?",
+        "res": "98.48",
+        "desc": "Najdłuższy rzut oszczepem na świecie został wykonany przez Jan Železný i wynosił 98,48 metra."
+    },
+    {
+        "question": "Ile waży największy człowiek w historii (w kilogramach)?",
+        "res": "635",
+        "desc": "Największym człowiekiem w historii był Robert Wadlow, którego masa wynosiła około 635 kg."
+    },
+    {
+        "question": "Ile wynosi najwyższa temperatura zanotowana na Ziemi (w stopniach Celsiusza)?",
+        "res": "56.7",
+        "desc": "test"
+    }
+]

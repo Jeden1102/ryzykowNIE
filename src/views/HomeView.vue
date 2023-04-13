@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <div>tteette {{ attendants }}</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script setup lang="ts">
+import { ref, computed, onMounted } from "vue";
+import dbService from "../services/dbService.js";
+const attendants = ref([]);
+const filterString = ref("");
+function onDataChange(items) {
+  let _tutorials = [];
+  console.log(items);
+  items.forEach((item) => {
+    let key = item.key;
+    let data = item.val();
+    _tutorials.push({
+      key: key,
+      name: data.name,
+      agreement: data.agreement,
+      th: data.th,
+      fr: data.fr,
+      sat: data.sat,
+    });
+  });
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
+  attendants.value = _tutorials;
+}
+
+onMounted(() => {
+  console.log("teette");
+  dbService.getAll().on("value", onDataChange);
 });
 </script>
+
+<style scoped>
+</style>
