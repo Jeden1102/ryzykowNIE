@@ -40,6 +40,7 @@ const gameSettings = reactive({
   maxPlayers: "",
   rounds: "",
   password: "",
+  inited: false,
   players: [
     {
       name: "",

@@ -6,7 +6,9 @@ class games {
     getAll() {
         return db
     }
-
+    getOne(id) {
+        return db.child(id);
+    }
     create(tutorial) {
         return db.push(tutorial);
     }

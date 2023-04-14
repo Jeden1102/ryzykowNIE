@@ -21,6 +21,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/join-game',
     name: 'joinGame',
     component: () => import(/* webpackChunkName: "about" */ '../views/JoinGame.vue')
+  },
+  {
+    path: '/game/:id',
+    name: 'game',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Game.vue'),
+    props:true,
   }
 ]
 

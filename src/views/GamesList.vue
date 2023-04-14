@@ -14,10 +14,15 @@
           <tr v-for="game in allGames" :key="game.key">
             <td>{{ game.name }}</td>
             <td>
-              <button>Dołącz</button>
+              <router-link
+                class="button"
+                :to="{ name: 'game', params: { id: game.key } }"
+              >
+                <span>Dołącz</span>
+              </router-link>
             </td>
             <td>
-              <b>{{ game.players.length }}</b>
+              <b>{{ game.players?.length }}</b>
               /
               {{ game.maxPlayers }}
             </td>
