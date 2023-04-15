@@ -58,7 +58,6 @@
         </svg>
       </button>
     </div>
-    {{ gameData }}
     <transition name="fade">
       <div v-if="showPlayers" class="show-players card modal">
         <div v-for="(player, idx) in gameData.players">
@@ -72,25 +71,27 @@
       <input type="text" v-model="playerName" />
       <button @click="login">Dołącz</button>
     </div>
+    <div class="game-board">G</div>
   </div>
 </template>
   
   <script setup lang="ts">
 import { defineProps, onMounted, ref } from "vue";
-import games from "../services/games.js";
+import games from "../services/games.ts";
 import firebase from "firebase/app";
 import "firebase/firestore";
-
+import { useGameStore } from "@/store";
 import QRCodeVue3 from "qrcode-vue3";
 const props = defineProps<{
   id: string;
 }>();
 const gameData = ref(null);
-
+const gameStore = useGameStore();
 function onDataChange(snapshot) {
   const data = snapshot.val();
   console.log(data);
   gameData.value = data;
+  gameStore.gameData = data;
 }
 const playerName = ref("");
 const locationLink = window.location.href;
@@ -127,12 +128,17 @@ function joinGame() {
 
 function login() {
   const players = gameData.value.players;
+  const playerId = Date.now();
   const newPlayer = {
-    id: Date.now(),
+    id: playerId,
     name: playerName.value,
   };
   players.push(newPlayer);
   console.log(players);
+  localStorage.setItem(
+    "ryzyk-fizyk-user",
+    JSON.stringify({ [props.id]: playerId })
+  );
   games
     .getOne(props.id)
     .update({
@@ -140,6 +146,7 @@ function login() {
     })
     .then(() => {
       console.log("Player added");
+      showJoin.value = false;
     })
     .catch((error) => {
       console.error(error);

@@ -32,11 +32,12 @@
 
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import games from "../services/games.js";
+import games from "../services/games.ts";
 import { useRoute, useRouter } from "vue-router";
 const router = useRouter();
 
 const pwdNeeded = ref(false);
+const playerId = Date.now();
 const gameSettings = reactive({
   name: "",
   username: "",
@@ -47,7 +48,7 @@ const gameSettings = reactive({
   players: [
     {
       name: "",
-      id: Date.now(),
+      id: playerId,
     },
   ],
 });
@@ -57,7 +58,7 @@ function addGame() {
     .then((ref) => {
       localStorage.setItem(
         "ryzyk-fizyk-user",
-        JSON.stringify({ [ref.key]: Date.now() })
+        JSON.stringify({ [ref.key]: playerId })
       );
       router.push(`/game/${ref.key}`);
     })

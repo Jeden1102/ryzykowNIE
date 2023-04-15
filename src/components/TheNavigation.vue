@@ -45,14 +45,39 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
+import { useGameStore } from "@/store";
+import games from "../services/games.ts";
 
 const route = useRoute();
+const gameStore = useGameStore();
 const router = useRouter();
 function leaveGame() {
   const confirm = window.confirm("Czy na pewno chcesz opuścić grę?");
   if (confirm) {
     router.push("/");
+    if (!localStorage.getItem("ryzyk-fizyk-user")) {
+      return;
+    }
+    const playerToRemove = Object.values(
+      JSON.parse(localStorage.getItem("ryzyk-fizyk-user"))
+    )[0];
+    const gameID = Object.keys(
+      JSON.parse(localStorage.getItem("ryzyk-fizyk-user"))
+    )[0];
     localStorage.removeItem("ryzyk-fizyk-user");
+    let players = gameStore.gameData.players;
+    players = players.filter((p) => p.id !== playerToRemove);
+    games
+      .getOne(gameID)
+      .update({
+        players: players,
+      })
+      .then(() => {
+        console.log("Player removed");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 </script>
@@ -64,7 +89,7 @@ nav {
   bottom: 0;
   width: 100%;
   background: $secondary-green;
-  height: 90px;
+  height: 60px;
   display: flex;
   justify-content: space-around;
   z-index: 999;
@@ -81,7 +106,7 @@ nav {
       background: $primary-green;
     }
     svg {
-      width: 50px;
+      width: 30px;
       fill: white;
     }
   }

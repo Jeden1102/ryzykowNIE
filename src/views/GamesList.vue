@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import games from "../services/games.js";
+import games from "../services/games.ts";
 const allGames = ref([]);
 const filterString = ref("");
 function onDataChange(items) {

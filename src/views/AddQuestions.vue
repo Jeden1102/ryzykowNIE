@@ -8,7 +8,7 @@
   
   <script setup lang="ts">
 import { ref } from "vue";
-import questions from "../services/questions.js";
+import questions from "../services/questions.ts";
 import { useToast } from "vue-toastification";
 
 const question = ref("");

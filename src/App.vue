@@ -23,6 +23,9 @@ import TheNavigation from "@/components/TheNavigation.vue";
 #app {
   background: $background;
 }
+.container {
+  padding-bottom: 60px;
+}
 header {
   h1 {
     font-weight: 500;
