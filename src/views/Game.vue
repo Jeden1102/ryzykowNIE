@@ -67,7 +67,7 @@
         </div>
       </div>
     </transition>
-    <div class="show-join card modal">
+    <div v-if="showJoin" class="show-join card modal">
       <label for="">Nazwa gracza</label>
       <input type="text" v-model="playerName" />
       <button @click="login">Dołącz</button>
@@ -127,7 +127,11 @@ function joinGame() {
 
 function login() {
   const players = gameData.value.players;
-  players[Date.now()] = playerName.value;
+  const newPlayer = {
+    id: Date.now(),
+    name: playerName.value,
+  };
+  players.push(newPlayer);
   console.log(players);
   games
     .getOne(props.id)

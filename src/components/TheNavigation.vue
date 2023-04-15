@@ -52,6 +52,7 @@ function leaveGame() {
   const confirm = window.confirm("Czy na pewno chcesz opuścić grę?");
   if (confirm) {
     router.push("/");
+    localStorage.removeItem("ryzyk-fizyk-user");
   }
 }
 </script>

@@ -33,6 +33,9 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import games from "../services/games.js";
+import { useRoute, useRouter } from "vue-router";
+const router = useRouter();
+
 const pwdNeeded = ref(false);
 const gameSettings = reactive({
   name: "",
@@ -51,8 +54,12 @@ const gameSettings = reactive({
 function addGame() {
   games
     .create(gameSettings)
-    .then(() => {
-      console.log("git");
+    .then((ref) => {
+      localStorage.setItem(
+        "ryzyk-fizyk-user",
+        JSON.stringify({ [ref.key]: Date.now() })
+      );
+      router.push(`/game/${ref.key}`);
     })
     .catch((e: any) => {});
 }
