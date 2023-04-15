@@ -127,13 +127,17 @@ function joinGame() {
 }
 
 function login() {
-  const players = gameData.value.players;
+  let players = gameData.value.players;
   const playerId = Date.now();
   const newPlayer = {
     id: playerId,
     name: playerName.value,
   };
-  players.push(newPlayer);
+  if (players) {
+    players.push(newPlayer);
+  } else {
+    players = [newPlayer];
+  }
   console.log(players);
   localStorage.setItem(
     "ryzyk-fizyk-user",
